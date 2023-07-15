@@ -1,0 +1,6 @@
+ls -l | awk '(NR%2==1)'
+
+NR satır numarasını söyler
+
+% mod alma
+

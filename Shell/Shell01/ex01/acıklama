@@ -1,0 +1,14 @@
+id -Gn $FT_USER | tr ' ' ',' | tr -d "\n"
+
+id grup oluşturur
+
+| komutları ayırmak için ve diğer komuta geçmesi için kullanılır
+
+tr translet yapılan işi çevirmek amaçlıdır
+
+tr ' ' ',' burda boş olan yere virgüle dönüştür diyoruz
+
+tr -d "\n" burda satırları sil tek bir satırda yaz diyoruz
+
+test etmek için groupadd diyerek gurup oluşturuyoruz ve grep ile grubun
+ oluşup oluşmadığıma bakıyoruz.

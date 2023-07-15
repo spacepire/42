@@ -1,0 +1,4 @@
+ifconfig | grep "ether" | awk '{print $2}'
+
+awk metin dosyalarını satırları okur ve satrıları ayırır 
+$1 gibi satırı belirtir

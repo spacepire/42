@@ -1,0 +1,15 @@
+grep -v yorumalrı siler yorumlar # ile yazılır
+
+-d ayırıcı yani kesilece olan karakteri belirtir
+
+-f hangi sütünun seçiliceğini belirtir
+
+sort -r tersine sırala
+
+sed metnin akışını düzemnler
+
+$ adresleme işareti ve son satırı temsil eder
+
+s değiştir anlamındadır
+
+g bütün bölümler için uygula demek

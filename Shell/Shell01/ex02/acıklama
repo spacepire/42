@@ -1,0 +1,13 @@
+find . -type f -name "*.sh" -exec basename {} .sh \;
+
+-exec find komutundaki her dosya için başka komutu çalıştırmaya yarıyor
+
+//{} bu sembolün yerini dosya yerleşmesi gerektiğini belirtir
+
+// -exec {} /; ve -exec {} + arasındaki fark birincisi-
+tek bir komutu tüm dosyalar için bir sefer çalıştırırken,
+ikicisi dosyalar için bir çok komut çalıştırmaya yarar.
+
+\ komuttaki ( ; gibi şeyleri komudun bir parçası saymasını sağlar 
+
+basename {} .sh dosya adındaki .sh yi kaldırmak için kullanılır
