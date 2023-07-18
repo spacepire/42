@@ -1,5 +1,8 @@
 id -Gn $FT_USER | tr ' ' ',' | tr -d "\n"
 
+FT_USER = nourssonuç için "god, root, admin, master, nours, bocal"
+FT_USER = daemonolacaktır ."daemon, bin"
+
 id grup oluşturur
 
 | komutları ayırmak için ve diğer komuta geçmesi için kullanılır

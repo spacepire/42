@@ -13,3 +13,19 @@ $ adresleme işareti ve son satırı temsil eder
 s değiştir anlamındadır
 
 g bütün bölümler için uygula demek
+
+cat /etc/passwd - metni göster
+
+grep -v "^#" - yorumları kaldır
+
+sed '1!n;d' - ikinciden başlayarak her ikinci satırı görüntüler (1,3,5,7)
+
+sed -e 's/:.*//' - sağdaki fazlalığı kaldır
+
+rev - her girişi tersine çevirme: Komut, kelimeleri ve cümleleri geriye doğru çevirir
+
+sotr -r - ters sırada sırala
+
+sed -e ':a' -e 'N' -e '$!ba' -e 's/\n/, /g' - satır sonlarını boşluklu virgüllerle değiştirin
+
+sed 's/$/./' - sonuna bir nokta koy tr -d '\n' - satır sonlarını kaldır
