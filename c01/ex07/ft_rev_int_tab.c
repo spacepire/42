@@ -1,36 +1,44 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_rev_int_tab.c                                   :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: odasdemi <odasdemi@student.42istanbul.c    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/17 13:51:18 by odasdemi          #+#    #+#             */
-/*   Updated: 2023/07/17 13:51:19 by odasdemi         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 #include <unistd.h>
 
-void	ft_swap(int *a, int *b)
+void		ft_putchar(char c)
 {
-	int	swap;
+	write(1, &c, 1);
+}
 
-	swap = *a;
-	*a = *b;
-	*b = swap;
+void		ft_put_arr_int(int *tab, int size)
+{
+	int i;
+
+	i = 0;
+	while (i < size)
+	{
+		ft_putchar(tab[i] + '0');
+		i++;
+	}
 }
 
 void	ft_rev_int_tab(int *tab, int size)
 {
-	int	i;
+	int		i;
+	char	temp;
 
-	if (size < 2)
+	i = -1;
+	while (++i < --size)
 	{
-		return ;
+		temp = tab[i];
+		tab[i] = tab[size];
+		tab[size] = temp;
 	}
-	i = 0;
-	while (i < --size)
-	{
-		ft_swap(&tab[i++], &tab[size]);
-	}
+}
+
+int		main(void)
+{
+	int	tab[] = {1,2,3,4,5};		
+
+	ft_rev_int_tab(tab, 5);			
+									
+	ft_put_arr_int(tab, 5);			
+	ft_putchar('\n');				
+
+	return (0);
 }

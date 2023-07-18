@@ -1,24 +1,22 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: odasdemi <odasdemi@student.42istanbul.c    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/17 13:08:59 by odasdemi          #+#    #+#             */
-/*   Updated: 2023/07/17 13:09:00 by odasdemi         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-#include <unistd.h>
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
 
 void	ft_putstr(char *str)
 {
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
+	while (*str != '\0')
 	{
-		write(1, &str[i], 1);
-		i++;
+		ft_putchar(*str);
+		str++;
 	}
+}
+
+int 	main(void)
+{
+	char	t[] = {"Hello\n"}; 
+	
+	ft_putstr(t);	
+
+	return (0);
 }
