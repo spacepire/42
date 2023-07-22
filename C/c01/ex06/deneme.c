@@ -1,7 +1,10 @@
-void	ft_putchar(char c)
+#include <unistd.h>
+
+void	ft_putchar(char c)			
 {
 	write(1, &c, 1);
 }
+
 
 void	ft_putnbr(int nb)
 {
@@ -31,19 +34,26 @@ void	ft_putnbr(int nb)
 	}
 }
 
-void	ft_ft(int *nbr)
+int		ft_strlen(char *str)	
 {
-	*nbr = 42;
+	int i;						
+	i = 0;						
+	while (str[i] != '\0')
+    {
+        i++;
+    }	
+	return (i);					
 }
 
-int		main(void)
-{
-	int		i;	
-		
-	i = 21;					
-	ft_ft(&i);								
 
-	ft_putnbr(i);			
+int 	main(void)
+{	
+	int		lenght;					
+	char	t[] = {"Hello"};
+
+	lenght = ft_strlen(t);
+
+	ft_putnbr(lenght);
 
 	return (0);
 }
