@@ -13,14 +13,14 @@
 void	ft_rev_int_tab(int *tab, int size)	
 {
 	int		i;						
-	char	temp;					
+	char	swap;					
 
 	i = -1;							
 
 	while (++i < --size)			
 	{
-		temp = tab[i];				
+		swap = tab[i];				
 		tab[i] = tab[size];			
-		tab[size] = temp;										
+		tab[size] = swap;										
 	}								
 }
