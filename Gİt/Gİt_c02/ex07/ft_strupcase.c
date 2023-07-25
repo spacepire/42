@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strupcase.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: odasdemi <odasdemi@student.42istanbul.c    +#+  +:+       +#+        */
+/*   By: odasdemi <odasdemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 00:36:49 by odasdemi          #+#    #+#             */
-/*   Updated: 2023/07/24 00:36:49 by odasdemi         ###   ########.fr       */
+/*   Updated: 2023/07/25 14:24:07 by odasdemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,6 @@ char	*ft_strupcase(char *str)
 	int	i;
 
 	i = 0;
-	if (str[i] == '\0' )
-	{
-		return (1);
-	}
 	while (str[i] != '\0')
 	{
 		if (str[i] >= 'a' && str[i] <= 'z')

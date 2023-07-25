@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlowcase.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: odasdemi <odasdemi@student.42istanbul.c    +#+  +:+       +#+        */
+/*   By: odasdemi <odasdemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 00:36:52 by odasdemi          #+#    #+#             */
-/*   Updated: 2023/07/24 00:36:52 by odasdemi         ###   ########.fr       */
+/*   Updated: 2023/07/25 14:23:41 by odasdemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,6 @@ char	*ft_strlowcase(char *str)
 	int	i;
 
 	i = 0;
-	if (str[i] == '\0' )
-	{
-		return (1);
-	}
 	while (str[i] != '\0')
 	{
 		if (str[i] >= 'A' && str[i] <= 'Z')

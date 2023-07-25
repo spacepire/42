@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr_non_printable.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: odasdemi <odasdemi@student.42istanbul.c    +#+  +:+       +#+        */
+/*   By: odasdemi <odasdemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 00:37:06 by odasdemi          #+#    #+#             */
-/*   Updated: 2023/07/24 00:37:06 by odasdemi         ###   ########.fr       */
+/*   Updated: 2023/07/25 20:07:13 by odasdemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <unistd.h>
 
 void	ft_putchar(char c)
 {

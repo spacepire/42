@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_str_is_numeric.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: odasdemi <odasdemi@student.42istanbul.c    +#+  +:+       +#+        */
+/*   By: odasdemi <odasdemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 00:36:35 by odasdemi          #+#    #+#             */
-/*   Updated: 2023/07/24 00:36:35 by odasdemi         ###   ########.fr       */
+/*   Updated: 2023/07/25 14:24:22 by odasdemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
