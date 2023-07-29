@@ -1,21 +1,24 @@
-int		ft_atoi(char *str)
+int	ft_atoi(char *str)
 {
-	int		i;
-	int		sign;
-	int		nbr;
+	int	sign;
+	int	num;
 
-	i = 0;
 	sign = 1;
-	nbr = 0;
-	if (!str[i])
-		return (0);
-	while (str[i] == '\t' || str[i] == '\v' || str[i] == '\n' || str[i] == '\r' \
-		|| str[i] == '\f' || str[i] == ' ')
-		i += 1;
-	if (str[i] == '-' || str[i] == '+')
-		if (str[i++] == '-')
-			sign = -1;
-	while (str[i] >= '0' && str[i] <= '9')
-		nbr = (nbr * 10) + (str[i++] - 48);
-	return (nbr * sign);
+	num = 0;
+	while ((*str == ' ') || (*str == '\t') || (*str == '\n')
+		|| (*str == '\v') || (*str == '\f') || (*str == '\r'))
+		str++;
+	if (*str == '-')
+		sign = -1;
+	while ((*str == '-') || (*str == '+'))
+		str++;
+	while (*str >= '0' && *str <= '9')
+	{
+		num = (num * 10) + ((int)*str - 48);
+		str++;
+	}
+	return (num * sign);
 }
+
+// (int)*str amacı yazılan sayıyı ascii'ye çevirmek
+//  num = (num * 10) basamak değerlerine veirir.
