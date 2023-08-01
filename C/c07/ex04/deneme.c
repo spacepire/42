@@ -1,130 +1,102 @@
-int		ft_ctoi(char c)				
+#include <stdlib.h>
+
+int		ft_in_base(char c, char *base)
 {
-	if (c >= '0' && c <= '9')
-		return (c - '0');
-	if (c >= 'A' && c <= 'F')
-		return (c - 'A' + 10);
-	if (c >= 'a' && c <= 'f')
-		return (c - 'a' + 10);
+	int i;
+
+	i = -1;
+	while (base[++i])
+		if (c == base[i])
+			return (i);
 	return (-1);
 }
 
-int		ft_pow(int nb, int power)
+int		ft_checkbase(char *base)
 {
-	int	result;
+	int i;
 
-	result = 1;
-	if(power < 0)
-		return (0);
-	if(power == 0)
-		return (1);
-	while (power--)
-		result *= nb;
-	return (result);
-}
-
-int		ft_check_base(char *base)
-{
-	int	i;
-	int	z;
-
-	i = 0;
-	if (!base || !base[1])
-		return (0);
-	while (base[i])
-	{
-		if (!((base[i] >= '0' && base[i] <= '9') || (base[i] >= 'a' \
-				&& base[i] <= 'z') || (base[i] >= 'A' && base[i] <= 'Z')))
+	i = -1;
+	while (base[++i])
+		if (base[i] == '+' || base[i] == '-' || base[i] == ' '
+			|| ft_in_base(base[i], base + i + 1) >= 0
+			|| (base[i] >= 9 && base[i] <= 13))
 			return (0);
-		z = i + 1;
-		while (base[z])
-		{
-			if (base[i] >= base[z])
-				return (0);
-			z++;
-		}
-		i++;
-	}
-	return (i);
+	return ((i < 2) ? 0 : i);
 }
 
-int		ft_atoi_base(char *str, char *base)
+int		ft_atoi_base(char *str, char *base, int size)
 {
-	int		num;
-	int		negative;
-	int		i;
-	int		pow;
-	int		base_type;
+	int i;
+	int n;
+	int negative;
 
-	negative = 1;
-	i = 0;
-	if((base_type = ft_check_base(base)))
-	{
-		if (*str == '-')
-		{
-			i++;
-			negative = -1;
-		}
-		while (str[i])
-			i++;
-		pow = 0;
-		num = 0;
-		while (--i >= 0)
-		{
-			if ((ft_ctoi(str[i]) != -1) && (ft_ctoi(str[i]) < base_type))
-				num += ft_ctoi(str[i]) * ft_pow(base_type, pow++);
-		}
-		return (num * negative);
-	}
-	return (0);
+	while ((*str >= 9 && *str <= 13) || *str == ' ')
+		str++;
+	negative = 0;
+	while (*str == '-' || *str == '+')
+		if (*str++ == '-')
+			negative = 1 - negative;
+	n = 0;
+	while ((i = ft_in_base(*str++, base)) >= 0)
+		n = n * size + i;
+	if (negative)
+		n *= -1;
+	return (n);
 }
 
-void	*ft_itoa_base(int nbr, char *base)
+int		ft_nbrlen(unsigned int n, unsigned int base_size)
 {
-	int		i;
-	int		j;
-	int		base_type;
-	int		n[16];
-	char	*final;
-
-	i = 0;
-	if ((base_type = ft_check_base(base)))
-	{
-		if (nbr < 0)
-		{
-			nbr = -nbr;
-			n[i] = '-';
-			i++;
-		}
-		while (nbr)
-		{
-			n[i] = nbr % base_type;
-			nbr /= base_type;
-			i++;
-		}
-		if ((final = malloc(sizeof(char) * (i + 1))) == ((void *)0))
-			return (((void *)0));
-		if ((n[0] == '-'))
-			final[0] = n[0];
-		j = 1;
-		while (i > 0)
-		{
-			--i;
-			final[j] = base[n[i]];
-			j++;
-			
-		}
-		final[j] = '\0';
-	}
-	return (final);	
+	if (n < base_size)
+		return (1);
+	return (1 + ft_nbrlen(n / base_size, base_size));
 }
 
 char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 {
-	int dec;
-	char *final;
+	char			*dest;
+	unsigned int	nb;
+	int				size;
+	int				i;
+	int				n;
 
-	dec = ft_atoi_base(nbr, base_from);
-	final = ft_itoa_base(dec, base_to);
-	return (final);
+	n = ft_checkbase(base_from);
+	if (!(n && (size = ft_checkbase(base_to))))
+		return (NULL);
+	n = ft_atoi_base(nbr, base_from, n);
+	nb = (n < 0) ? -n : n;
+	i = ft_nbrlen(nb, size) + ((n < 0) ? 1 : 0);
+	if (!(dest = malloc((i + 1) * sizeof(char))))
+		return (NULL);
+	dest[i] = '\0';
+	while (i--)
+	{
+		dest[i] = base_to[nb % size];
+		nb /= size;
+	}
+	if (n < 0)
+		dest[0] = '-';
+	return (dest);
 }
+
+#include <stdio.h>
+
+int main() {
+    char* binaryNumber = "10101010100";
+    char* decimalNumber = ft_convert_base(binaryNumber, "01", "0123456789");
+    printf("Binary: %s -> Decimal: %s\n", binaryNumber, decimalNumber);
+    free(decimalNumber);
+
+    char* hexNumber = "1A3";
+    char* decimalNumber2 = ft_convert_base(hexNumber, "0123456789ABCDEF", "0123456789");
+    printf("Hexadecimal: %s -> Decimal: %s\n", hexNumber, decimalNumber2);
+    free(decimalNumber2);
+
+    char* decimalNumber4 = "255";
+    char* binaryNumber2 = ft_convert_base(decimalNumber4, "0123456789", "01");
+    printf("Decimal: %s -> Binary: %s\n", decimalNumber4, binaryNumber2);
+    free(binaryNumber2);
+
+    return 0;
+}
+
+/*Belli bir değeri dönüştürme işlemi yaapıyor*/

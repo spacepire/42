@@ -1,31 +1,24 @@
 #include <stdlib.h>
-int	ft_str_length(char *str)
-{
-	int	index;
-
-	index = 0;
-	while (str[index])
-		index++;
-	return (index);
-}
 
 char	*ft_strdup(char *src)
 {
-	int		index;
-	char	*dest;
-	char	*d;
+	char	*new;
+	int		i;
 
-	index = 0;
-	d = ((dest = (char *)malloc(ft_str_length(src) * sizeof(char) + 1)));
-	if (!d)
+	new = malloc(sizeof(*src));
+	if (new == NULL)
+		return (NULL);
+	i = 0;
+	while (src[i] != '\0')
 	{
-		return (0);
+		new[i] = src[i];
+		i++;
 	}
-	while (src[index])
-	{
-		dest[index] = src[index];
-		index++;
-	}
-	dest[index] = '\0';
-	return (dest);
+	new[i] = '\0';
+	return (new);
 }
+
+/* bir diziyi hafizada dinamik olarak kopyasını oluşturmak için kullanılır
+ ve ana dizine bir şey olmaz lakin oluşturulan diziyi sonradan free ile 
+ serbest bırakmak lazım yoksa belleği sürekli sömürür.
+*/
